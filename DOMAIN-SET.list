@@ -12,12 +12,6 @@
 - DOMAIN-SUFFIX,giffgaff.com
 - DOMAIN-SUFFIX,www.kimi.com
 - DOMAIN-SUFFIX,mastercardservices.com
-
-# ===== 验证码 =====
-- DOMAIN-SUFFIX,www.gstatic.cn
-- DOMAIN-SUFFIX,recaptcha.google.cn
-
-# ===== 国内测速/下载 =====
 - DOMAIN-SUFFIX,91mjw.com
 - DOMAIN-SUFFIX,spaceship.com
 - DOMAIN-SUFFIX,westerndigital.com
@@ -27,6 +21,10 @@
 - DOMAIN-SUFFIX,minebbs.com
 - DOMAIN-SUFFIX,51ssl.com
 - DOMAIN-SUFFIX,naixi.net
+
+# ===== 验证码 =====
+- DOMAIN-SUFFIX,www.gstatic.cn
+- DOMAIN-SUFFIX,recaptcha.google.cn
 
 # ===== Steam / Epic 国内镜像 =====
 - DOMAIN-SUFFIX,steamcontent.com
