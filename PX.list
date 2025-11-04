@@ -1,0 +1,19 @@
+# ****** 代理域名集（最终去重版）******
+# 最后更新：2025-06-25
+# ===== Cloudflare =====
+- DOMAIN-SUFFIX,engage.cloudflareclient.com
+- DOMAIN-SUFFIX,challenges.cloudflare.com
+
+# ===== Apple 中继 =====
+- DOMAIN-SUFFIX,apple-relay.apple.com
+
+# ===== 论坛 / 小众 =====
+- DOMAIN-SUFFIX,c.mi.com
+- DOMAIN-SUFFIX,sspanel.net
+#- DOMAIN-SUFFIX,minebbs.com
+- DOMAIN-SUFFIX,qobuz.com
+- DOMAIN-SUFFIX,yecaoyun.com
+- DOMAIN-SUFFIX,hassbian.com
+
+# ===== DNS 检测 =====
+- DOMAIN-SUFFIX,ipleak.net
