@@ -1,0 +1,110 @@
+# ===== 虚拟银行 =====
+DOMAIN-SUFFIX,za.group                  # ZA Bank
+DOMAIN-SUFFIX,zajourney.com             # ZA Bank
+DOMAIN-SUFFIX,zafinsvc.com              # ZA Bank
+DOMAIN-SUFFIX,airstarbank.com           # 天星银行 Airstar
+DOMAIN-SUFFIX,welab.bank                # WeLab Bank 汇立银行
+DOMAIN-SUFFIX,fusionbank.com            # Fusion Bank 富融银行
+DOMAIN-SUFFIX,livibank.com              # Livi Bank 理慧银行
+DOMAIN-SUFFIX,mox.com                   # Mox Bank
+DOMAIN-SUFFIX,antbank.hk                # Ant Bank 蚂蚁银行
+DOMAIN-SUFFIX,paob.com.hk               # PAOB 平安壹账通银行
+
+# ===== 电子钱包 =====
+DOMAIN-SUFFIX,alipay.hk                 # 支付宝香港 AlipayHK
+DOMAIN-SUFFIX,alipayobjects.com         # 支付宝静态资源 (全球)
+DOMAIN-SUFFIX,ap-wallet-msp.hk          # 支付宝钱包API
+DOMAIN-SUFFIX,alipay.com.hk             # 支付宝香港官网
+
+# ===== 发钞行 / 传统银行 =====
+# 汇丰 HSBC
+DOMAIN-SUFFIX,hsbc.com.hk       # 香港官网及个人银行
+DOMAIN-SUFFIX,hsbc.com          # 全球官网
+DOMAIN-SUFFIX,trkd-hs.com       # 数据追踪与行情服务
+DOMAIN-SUFFIX,hbap.com          # 汇丰亚太区内部服务
+DOMAIN-SUFFIX,hsbcnet.com       # 商业网上理财 (HSBCNet)
+
+# 恒生 Hang Seng
+DOMAIN-SUFFIX,hangseng.com      # 官网及个人银行
+DOMAIN-SUFFIX,hangsengreward.com  # 积分奖励计划 (Reward+)
+DOMAIN-SUFFIX,hangsengmastercard.com # Mastercard联名卡活动
+
+# 中银香港 BOCHK
+DOMAIN-SUFFIX,bochk.com         # 官网及个人银行
+DOMAIN-SUFFIX,bochkreward.com   # 积分奖励计划
+DOMAIN-SUFFIX,bochk-stock.com   # 股票交易服务
+DOMAIN-SUFFIX,bochk-pay.com     # 支付服务 (BoC Pay)
+
+# 渣打 Standard Chartered
+DOMAIN-SUFFIX,standardchartered.com.hk # 香港官网及个人银行
+DOMAIN-SUFFIX,sc.com            # 全球官网缩写
+DOMAIN-SUFFIX,scbassets.com     # 静态资源 (图片/CSS)
+DOMAIN-SUFFIX,screward.com      # 积分奖励计划
+
+# 花旗 Citibank
+DOMAIN-SUFFIX,citibank.com.hk   # 香港官网及个人银行
+DOMAIN-SUFFIX,citi.com          # 全球官网
+DOMAIN-SUFFIX,thankyou.com      # 全球积分兑换平台 (ThankYou Rewards)
+DOMAIN-SUFFIX,citiretailservices.com # 零售合作服务
+DOMAIN-SUFFIX,citibank.co.uk    # 英国官网 (部分全球服务跳转)
+DOMAIN-SUFFIX,citi-api.com      # API接口服务
+
+# 东亚 BEA
+DOMAIN-SUFFIX,bea.com.hk        # 官网及个人银行
+DOMAIN-SUFFIX,bea-api.com       # API接口服务
+
+# 工银亚洲 ICBC (Asia)
+DOMAIN-SUFFIX,icbcasia.com      # 官网及个人银行
+
+# 中信银行国际 CNCB
+DOMAIN-SUFFIX,ccba.com.hk       # 官网及个人银行
+DOMAIN-SUFFIX,cncbinternational.com # 集团官网
+DOMAIN-SUFFIX,cncbireward.com   # 积分奖励计划
+
+# 华侨永亨 OCBC
+DOMAIN-SUFFIX,ocbc.com.hk       # 香港官网及个人银行
+DOMAIN-SUFFIX,ocbcreward.com    # 积分奖励计划
+
+# 富邦 Fubon
+DOMAIN-SUFFIX,fubonbank.com.hk  # 香港官网及个人银行
+DOMAIN-SUFFIX,fubon-cards.com.hk # 信用卡服务
+
+# 南洋商业 NCB
+DOMAIN-SUFFIX,ncb.com.hk        # 官网及个人银行
+DOMAIN-SUFFIX,ncbreward.com     # 积分奖励计划
+
+# 大众 Public Bank
+DOMAIN-SUFFIX,publicbank.com.hk # 香港官网及个人银行
+
+# 上海商业 Shanghai Commercial Bank
+DOMAIN-SUFFIX,shanghaihb.com    # 官网及个人银行
+DOMAIN-SUFFIX,scb.com.hk        # 信用卡服务
+
+# 集友 Chiyu Bank
+DOMAIN-SUFFIX,chiyubank.com     # 官网及个人银行
+
+# 印度银行 Bank of India
+DOMAIN-SUFFIX,indbank.com.hk    # 香港分行官网
+
+# ===== 信用卡 / 积分 / 支付及公共服务 =====
+DOMAIN-SUFFIX,moneyback.com.hk          # 易赏钱
+DOMAIN-SUFFIX,openrice.com              # OpenRice
+DOMAIN-SUFFIX,liveperson.net            # 在线客服系统
+DOMAIN-SUFFIX,lpsnmedia.net             # 在线客服系统资源
+DOMAIN-SUFFIX,vam-hk.cloud1.vv1865.com  # 银行服务组件
+DOMAIN-SUFFIX,tealiumiq.com             # 网站标签管理
+DOMAIN-SUFFIX,eum-appdynamics.com       # App性能监控
+DOMAIN-SUFFIX,cdnhsbcrhostorage.azureedge.net # HSBC Azure CDN
+DOMAIN-SUFFIX,siteintercept.qualtrics.com # 问卷调查
+DOMAIN-SUFFIX,we-stats.com              # 统计分析
+DOMAIN-SUFFIX,online-metrix.net         # 风险识别
+DOMAIN-SUFFIX,tags.tiqcdn.com           # 网站标签管理
+DOMAIN-SUFFIX,ocsp.digicert.com         # SSL证书验证
+DOMAIN-SUFFIX,mastercard.com            # Mastercard 3DS验证
+DOMAIN-SUFFIX,visa.com                  # Visa 3DS验证
+DOMAIN-SUFFIX,unionpay.com              # 银联支付服务
+
+# ===== 行情专用 (必须直连) =====
+DOMAIN,mds1a.trkd-hs.com                # 汇丰行情接口
+DOMAIN-SUFFIX,bochkapi.etnet.com.hk     # 中银行情接口
+DOMAIN-SUFFIX,bochkapp01.etnet.com.hk   # 中银行情接口
