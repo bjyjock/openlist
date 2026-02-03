@@ -1,11 +1,23 @@
+
 # ****** 代理域名集（最终去重版）******
 # 最后更新：2025-06-25
+
 # ===== Cloudflare =====
 - DOMAIN-SUFFIX,engage.cloudflareclient.com
 - DOMAIN-SUFFIX,challenges.cloudflare.com
 
 # ===== Apple 中继 =====
 - DOMAIN-SUFFIX,apple-relay.apple.com
+
+# ===== RIR 注册机构 =====
+- DOMAIN-SUFFIX,ftp.afrinic.net
+- DOMAIN-SUFFIX,ftp.apnic.net
+- DOMAIN-SUFFIX,ftp.arin.net
+- DOMAIN-SUFFIX,ftp.lacnic.net
+- DOMAIN-SUFFIX,ftp.ripe.net
+
+# ===== 数据服务 =====
+- DOMAIN-SUFFIX,hdhive.com
 
 # ===== 论坛 / 小众 =====
 - DOMAIN-SUFFIX,c.mi.com
