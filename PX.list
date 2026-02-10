@@ -16,9 +16,6 @@
 - DOMAIN-SUFFIX,ftp.lacnic.net
 - DOMAIN-SUFFIX,ftp.ripe.net
 
-# ===== 数据服务 =====
-- DOMAIN-SUFFIX,hdhive.com
-
 # ===== 论坛 / 小众 =====
 - DOMAIN-SUFFIX,c.mi.com
 - DOMAIN-SUFFIX,sspanel.net
