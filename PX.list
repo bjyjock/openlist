@@ -30,3 +30,14 @@ DOMAIN-SUFFIX,www.dmit.io
 
 # ===== DNS 检测 =====
 DOMAIN-SUFFIX,ipleak.net
+
+# ===== Logitech 检测 =====
+DOMAIN-SUFFIX,logi.com
+DOMAIN-SUFFIX,logicool.co.jp
+DOMAIN-SUFFIX,logicoolg.com
+DOMAIN-SUFFIX,logitech.biz
+DOMAIN-SUFFIX,logitech.com
+DOMAIN-SUFFIX,logitech.fr
+DOMAIN-SUFFIX,logitechg.com
+DOMAIN-SUFFIX,logitechg.fr
+DOMAIN-SUFFIX,worldsfastestgamer.net
