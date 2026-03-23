@@ -1,5 +1,5 @@
 # ****** 代理域名集（最终去重版）******
-# 最后更新：2026-03-12
+# 最后更新：2026-03-23
 
 # ===== Cloudflare =====
 DOMAIN-SUFFIX,engage.cloudflareclient.com
@@ -27,6 +27,7 @@ DOMAIN-SUFFIX,www.scamalytics.com
 DOMAIN-SUFFIX,www.gq685.com
 DOMAIN-SUFFIX,www.dmit.io
 DOMAIN-SUFFIX,nullbr.online
+DOMAIN-SUFFIX,forums.unraid.net
 
 # ===== DNS 检测 =====
 DOMAIN-SUFFIX,ipleak.net
