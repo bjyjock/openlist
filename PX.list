@@ -4,9 +4,24 @@
 # ===== Cloudflare =====
 DOMAIN-SUFFIX,engage.cloudflareclient.com
 DOMAIN-SUFFIX,challenges.cloudflare.com
+DOMAIN-SUFFIX,r2.cloudflarestorage.com
 
 # ===== Apple 中继 =====
 DOMAIN-SUFFIX,apple-relay.apple.com
+
+# ===== Docker Hub =====
+# --- 入口与认证 ---
+DOMAIN-SUFFIX,docker.io
+DOMAIN-SUFFIX,docker.com
+DOMAIN-SUFFIX,dockerhub.com
+DOMAIN-SUFFIX,compose-spec.io
+
+# --- 图片层 CDN（Cloudflare / CloudFront）---
+DOMAIN-SUFFIX,production.cloudflare.docker.com
+DOMAIN-SUFFIX,production.cloudfront.docker.com
+DOMAIN-SUFFIX,d1q6f0aelx0por.cloudfront.net
+DOMAIN-SUFFIX,d2wy8f7a9ursnm.cloudfront.net
+DOMAIN-SUFFIX,d36jcksde1wxzq.cloudfront.net
 
 # ===== RIR 注册机构 =====
 DOMAIN-SUFFIX,ftp.afrinic.net
