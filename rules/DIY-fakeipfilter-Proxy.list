@@ -1,0 +1,11 @@
+# ============================================================
+# DIY-fakeipfilter-Proxy —— 自用域名代理
+# behavior: domain  |  format: text
+# 说明: Gemini 主站 / 短域名 / API；+. 已覆盖主域名与子域名
+# 最后更新: 2026-04-02
+# ============================================================
+
+# ----- Gemini -----
++.gemini.google.com
++.gemini.google
++.generativelanguage.googleapis.com
