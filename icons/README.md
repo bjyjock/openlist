@@ -1,0 +1,345 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Hawaiine/Oasisic-Icons/main/icons/Surge/Surge/Surge.png">
+    <img src="https://raw.githubusercontent.com/Hawaiine/Oasisic-Icons/main/icons/Surge/Surge/Surge.png" width="120" alt="Oasisic-Icons">
+  </picture>
+</p>
+
+<h1 align="center">🎨 Oasisic-Icons</h1>
+
+<p align="center">
+  <b>跨平台代理策略组图标合集</b><br>
+  <i>Cross-platform Proxy Policy Group Icon Collection</i>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/github/license/Hawaiine/Oasisic-Icons?style=flat-square" alt="License">
+  <img src="https://img.shields.io/github/stars/Hawaiine/Oasisic-Icons?style=flat-square" alt="Stars">
+  <img src="https://img.shields.io/github/last-commit/Hawaiine/Oasisic-Icons?style=flat-square" alt="Last Commit">
+  <img src="https://img.shields.io/github/repo-size/Hawaiine/Oasisic-Icons?style=flat-square" alt="Repo Size">
+  <img src="https://img.shields.io/badge/icons-311-blue?style=flat-square" alt="Icons Count">
+  <img src="https://img.shields.io/badge/brands-308-green?style=flat-square" alt="Brands Count">
+  <img src="https://img.shields.io/badge/categories-42-orange?style=flat-square" alt="Categories Count">
+</p>
+
+---
+
+> **位置说明**：本 README 位于 `icons/` 目录。文中的仓库级路径（`scripts/`、`config/`、`docs/`）以仓库根目录为基准；从本文件所在目录访问时使用 `../` 前缀（下方相对链接已按此调整）。图标 canonical 路径仍写作 `icons/...`，与 raw URL 保持一致。
+
+## 🧭 Architecture Contract / 架构契约
+
+- `brands.json` 是 Brand/Icon SSOT；`category` 是第一层物理目录，`parent_brand` 只表示 immediate Brand/Product parent。
+- category 与 parent_brand 独立：category 等于 graph/root parent 时不重复目录；同类中间 parent 存在时递归嵌套。
+- 物理路径唯一由 `scripts/brand_relationships.py::expected_icon_path()` 派生；cross-category parent 不机械迁移；无 icon 的 parent 不制造伪目录。
+- 叶子统一为 `<id>/<id>.png`。派生链为 SSOT → resolver → README / Surge / Glossary / relationship export → CI。
+- SpaceXAI 的最终关系与路径：`SpaceXAI → X`、`SpaceXAI → xAI → Grok`，对应 `icons/SpaceXAI/X/X.png`、`icons/SpaceXAI/xAI/xAI.png`、`icons/SpaceXAI/xAI/Grok/Grok.png`；生态根自身图标为 `icons/SpaceXAI/SpaceXAI/SpaceXAI.png`（由官方 Brand Guidelines 素材按本项目容器规范规范化派生，见「生态根规则」）。
+- 统计口径必须显式区分：**SSOT entities**（`brands.json` 条目数）/ **icon-backed entities**（有 `icon_path` 的条目数）/ **PNG**（磁盘文件数）。pending ecosystem 是正式 SSOT 节点但没有 PNG，二者不得混写。
+
+## 📖 简介 / Introduction
+
+**Oasisic-Icons** 是一套专为代理工具设计的策略组图标合集：当前共 **311** 个 PNG 图标，覆盖 **308** 个品牌，归入 **42** 个一级分类（其中 42 个活跃）。
+
+**仓库统计口径 / Repository metrics**：SSOT entities **308** · canonical entities **241** · icon-backed entities **308** · PNG **311** · pending no-icon entities **0** · categories **42** · ecosystems **17**
+
+本项目为独立图标仓库，当前 311 个图标均为 512×512 PNG（RGBA 模式），适配 Surge、Loon、Clash Meta / Mihomo、Stash、Quantumult X、Egern 等主流代理客户端。
+
+> **画质规范（贡献与替换标准）**：512×512 方形 PNG，RGBA 模式，Apple 风格 squircle 圆角（圆角半径 ≈ 115px / 约 22.4%），保留原始底色。
+> 仓库内图标按该规范维护，均为 512×512、RGBA、保留原始底色，经 `scripts/optimize-icons.py` 无损重压缩；少量历史圆角边缘遗留项待处理，明细与遗留项见 [`docs/references/icon-quality-notes.md`](../docs/references/icon-quality-notes.md)。
+
+---
+
+## 🗂 目录与命名规范 / Structure & Naming
+
+### 文件夹结构
+
+所有图标统一采用以下结构（多层物理层级，2026-10-01 定稿）：
+
+```
+icons/
+└── <分类>/
+    └── <品牌名>/
+        └── <品牌名>.png                    ← 默认图标（必须存在，无任何后缀）
+```
+
+**同类中间父品牌下的深层子品牌**物理嵌套在父品牌目录内：
+
+```
+icons/
+└── Meta/
+    └── Facebook/
+        ├── Facebook.png
+        ├── README.md
+        └── Instagram/
+            └── Instagram.png               ← Instagram → Facebook → Meta
+```
+
+路径由 `scripts/brand_relationships.py::expected_icon_path()` 统一推导
+（`brands.json.icon_path` 必须等于其输出，CI 第 7/17 组校验），全库矩阵见
+[`docs/references/physical-hierarchy-audit.md`](../docs/references/physical-hierarchy-audit.md)。
+
+### 强制规则
+
+1. **每个品牌必须有独立文件夹**，即使目前只有一个图标。
+2. **默认图标永远命名为 `<品牌名>.png`**（无任何后缀），且必须存在。
+3. **一个品牌恰好一个 canonical PNG**：品牌目录内只允许 `<品牌名>.png`。出现任何第二个 PNG（`<品牌名>01.png`、`<品牌名>-dark.png`、无关图片…）都是契约违规——`scripts/generate-icon-json.sh` 报错退出非 0，`ci-validate-icons.py` 第 3 组（Naming）同样 FAIL。变体**不属于当前架构**：将来若需要多风格，必须先立正式 variant schema 再实现，不得用数字后缀临时凑。
+4. **品牌名使用 PascalCase**，尽量与 [mihomo-rules](https://github.com/Hawaiine/mihomo-rules/tree/main/ruleset) 的品牌名保持一致。
+   - 例外：**官方品牌名的大小写优先**，保留官方写法的目录有 `iQIYI`、`friDayVideo`、`myTVSUPER` 等；这些名称同时被消费方（mihomo-rules）的配置引用，不得为了「统一大小写」而改动。
+5. **特殊字符处理**：`+` → `Plus`（例如 `DisneyPlus`）。
+
+### 正确示例
+
+```
+icons/Country/Japan/
+└── Japan.png            ← 默认（原始素材经 scripts/normalize-icons.py 规范化到 512×512）
+
+icons/Media/Netflix/
+└── Netflix.png          ← 只有 1 个也必须放进品牌文件夹
+```
+
+### 错误示例（禁止）
+
+- ❌ 直接把 PNG 放在分类目录下（不建品牌文件夹）
+- ❌ 品牌文件夹缺少 `<品牌名>.png` 默认图标
+- ❌ 使用连字符/无零填充的旧式变体命名（`Spotify-1.png`、`Spotify1.png`）
+
+---
+
+## 🚀 快速开始 / Quick Start
+
+### 1. 通用直链格式
+
+```
+https://raw.githubusercontent.com/Hawaiine/Oasisic-Icons/main/icons/<分类>/[<中间父…>/]<品牌>/<文件名>.png
+```
+
+示例：
+
+```
+# 默认图标
+https://raw.githubusercontent.com/Hawaiine/Oasisic-Icons/main/icons/Media/Netflix/Netflix.png
+
+# 单文件品牌
+https://raw.githubusercontent.com/Hawaiine/Oasisic-Icons/main/icons/Microsoft/GitHub/GitHub.png
+```
+
+> 本仓库只提供 `raw.githubusercontent.com` 直链，**不使用 jsDelivr 等 CDN**。
+
+### 2. 批量图标订阅（JSON）
+
+部分客户端支持一次性导入整套图标集（图标订阅 / 策略组图标订阅），订阅地址为：
+
+```
+https://raw.githubusercontent.com/Hawaiine/Oasisic-Icons/main/config/surge-icon.json
+```
+
+在客户端的「策略组图标 / 图标订阅」入口中添加该 URL 即可（Loon、Stash、Egern、Clash Meta 等支持图标订阅的版本）。
+
+> 注意：`config/surge-icon.json` 是**图标订阅清单**，不是脚本，请勿填写到 `script-path` 等脚本字段。
+
+### 3. Surge / Loon 单条示例
+
+```ini
+# Surge：icon-url 必须写在策略组同一行
+[Proxy Group]
+Netflix = select, HK, TW, JP, SG, icon-url=https://raw.githubusercontent.com/Hawaiine/Oasisic-Icons/main/icons/Media/Netflix/Netflix.png
+```
+
+```ini
+# Loon：img-url（不是 icon），同样写在策略组同一行
+[Proxy Group]
+Netflix = select, HK, TW, JP, SG, img-url = https://raw.githubusercontent.com/Hawaiine/Oasisic-Icons/main/icons/Media/Netflix/Netflix.png
+```
+
+### 4. Clash Meta / Mihomo 单条示例
+
+```yaml
+# config.yaml
+proxy-groups:
+  - name: Netflix
+    type: select
+    proxies: [HK, TW, JP, SG]
+    icon: https://raw.githubusercontent.com/Hawaiine/Oasisic-Icons/main/icons/Media/Netflix/Netflix.png
+
+  - name: 🎬 Media
+    type: select
+    proxies: [Proxy]
+    icon: https://raw.githubusercontent.com/Hawaiine/Oasisic-Icons/main/icons/Media/Netflix/Netflix.png
+```
+
+> Mihomo / Clash Meta 的图标字段是 **`icon`（单数，字符串）**，不是复数列表，也不是 `"名称: URL"` 形式的字符串数组。
+
+### 5. Quantumult X 单条示例
+
+```ini
+[policy]
+static=Netflix, HK, TW, JP, SG, img-url=https://raw.githubusercontent.com/Hawaiine/Oasisic-Icons/main/icons/Media/Netflix/Netflix.png
+```
+
+> QX 的图标 URL 只应写在 `[policy]` 段的 `static=..., img-url=...` 里，不要使用「URL 重写 / MITM 劫持」的写法。
+
+---
+
+## 📁 图标分类列表 / Categories
+
+| 分类 | 说明 | 品牌数 | 图标数 |
+|---|---|---:|---:|
+| 🤖 AI | 人工智能服务与模型 | 11 | 11 |
+| 🏢 Alibaba | 阿里巴巴生态 | 10 | 10 |
+| 📦 Amazon | 亚马逊生态 | 6 | 6 |
+| 🍎 Apple | 苹果生态 | 13 | 13 |
+| 🔍 Baidu | 百度生态 | 4 | 4 |
+| ▶️ ByteDance | 字节跳动生态 | 5 | 5 |
+| 📶 ChinaMobile | 中国移动生态 | 3 | 3 |
+| 🏰 Disney | 迪士尼生态 | 4 | 4 |
+| 🏗️ Infrastructure | 基础设施与运维（云平台/网络/容器/NAS） | 7 | 7 |
+| 💾 Cloud Storage | 云盘与文件存储 | 5 | 5 |
+| 💬 Communication | 即时通讯与团队协作 | 6 | 6 |
+| 🌍 Country | 国家与地区旗帜 | 21 | 21 |
+| ₿ Crypto | 加密货币与区块链 | 1 | 1 |
+| 💻 Development | 开发者工具与平台 | 2 | 2 |
+| 📚 Education | 教育与学习平台 | 2 | 2 |
+| 💰 Finance | 金融理财 | 1 | 1 |
+| 📱 Meta | Meta 生态 | 6 | 6 |
+| 🎮 Game | 游戏平台与服务 | 5 | 5 |
+| 🔎 Google | Google 服务与生态 | 12 | 12 |
+| 🔌 Hardware | 硬件与消费电子设备 | 8 | 8 |
+| 🏥 Health | 健康与运动 | 1 | 1 |
+| 🦚 NBCUniversal | NBC 环球生态 | 3 | 3 |
+| 🎧 NetEase | 网易生态 | 3 | 3 |
+| 🏠 Home | 智能家居与家庭设备 | 2 | 2 |
+| 🎬 Media | 影音流媒体与视频 | 55 | 55 |
+| 🪟 Microsoft | 微软服务与生态 | 10 | 10 |
+| 🎵 Music | 音乐服务 | 10 | 10 |
+| 📰 News | 新闻与资讯 | 1 | 1 |
+| 💳 Payment | 支付与金融交易 | 5 | 5 |
+| ☎️ PCCW | 电讯盈科生态 | 3 | 3 |
+| 🌐 Proxy | 代理线路与协议 | 4 | 4 |
+| 🛒 Shopping | 购物与电商 | 6 | 6 |
+| 👥 Social | 社交媒体与社区 | 10 | 10 |
+| 🕹️ Sony | 索尼生态 | 4 | 4 |
+| ⚡ Surge | Surge 应用图标 | 1 | 1 |
+| ⚙️ System | 代理系统图标与通用策略 | 27 | 30 |
+| 📡 Telecom | 电信运营商 | 3 | 3 |
+| 🐧 Tencent | 腾讯生态 | 8 | 8 |
+| 🚗 Transport | 出行与交通 | 3 | 3 |
+| 🧰 Utilities | 生产力工具与实用服务 | 10 | 10 |
+| 🎞️ Warner Bros. Discovery | 华纳兄弟探索生态 | 3 | 3 |
+| 🛰️ SpaceXAI | SpaceXAI 生态 | 4 | 4 |
+| **合计** | — | **308** | **311** |
+### 分类体系原则（方案 C，2026-09-29）
+
+一级分类**不设中间层**：不设置 `Ecosystems / Services / Special` 等分类之上的中间层；分类之下的深度只由**真实父子层级**决定——直接父品牌是 category 根时保持 `icons/<分类>/<品牌>/`，直接父品牌本身也是中间品牌（同类且有自身图标）时嵌套为 `icons/<分类>/<中间父>/<品牌>/`。
+
+**分类定义 SSOT**：分类的 ID、emoji、显示名、描述、排序、状态唯一来源为 [`config/categories.json`](../config/categories.json)；分类 README 由 `scripts/generate-category-readmes.sh` 从该文件生成，禁止在脚本中硬编码。
+
+**品牌语义 SSOT**：[`config/brands.json`](../config/brands.json) 记录每个品牌的 canonical 归属（分类、实体类型、直接品牌父级、显示名）。`parent_brand` 只表达 Brand / Product Hierarchy；Developer / Provider / Platform Integration / Distribution 关系不写入该字段，相关当前事实由归属审计文档记录。`surge-icon.json` 与 `brand-glossary.md` 均由磁盘 + SSOT 派生，CI 校验三方一致。
+
+**分类原则**：
+
+1. **功能分类**（AI / Media / Music / …）按服务语义归类；
+2. **生态分类**判定规则统一如下（机械、可自动验证，CI 动态校验，`scripts/brand_relationships.py`）：
+   > **一个生态根（`entity_type: ecosystem`）拥有 ≥ 2 个 Canonical Descendants 时，为其建立独立一级品牌生态分类。**
+   统计口径：只计算沿 `parent_brand` 链可达该生态根的 Canonical Brand（**descendants = 直系子 + 孙 + 更深后代**，不含 root 本身、aliases / 历史品牌 / 重复文件）；用 descendants 而非 direct children，避免中间层（如 Facebook）误触发分类爆炸。
+   - descendants ≥ 2 → 建 `icons/<Root>/` 一级分类，descendants 统一迁入（`category = <Root>`，**保留 `parent_brand`**）；
+   - 生态根有 root icon → 迁入 `icons/<Root>/<Root>/<Root>.png`；没有 root icon → 仍建目录，**不得伪造 root icon**；正式 SSOT ecosystem 节点登记 `icon_status=pending`（白名单仅用于尚未进入 SSOT 的 parent，不用于正式根节点）；
+   - descendants < 2 → 不建一级目录（避免一级目录爆炸），留在功能分类，生态关系只写 `parent_brand` 元数据。
+   当前生态分类（17 个，随 brands.json 动态扩展，不写死数量）：Alibaba / Amazon / Apple / Baidu / ByteDance / ChinaMobile / Disney / Google / Meta / Microsoft / NBCUniversal / NetEase / PCCW / SONY / SpaceXAI / Tencent / WarnerBrosDiscovery。
+   其中 **SpaceXAI** 为 2026-10-01 新增：descendants = X / xAI / Grok = 3 ≥ 2；根节点为正式 `brands.json` SSOT 条目（`entity_type=ecosystem`、`canonical=true`、`icon_status=official`）。根图标来自官方素材，**禁止伪造、禁止复用其它品牌资产**；官方来源与派生关系必须分开描述，不得混写：
+   - **Official source asset**：SpaceXAI 官方 Brand Guidelines（<https://x.ai/legal/brand-guidelines>）Logos 下载包 `https://data.x.ai/logos/SpaceXAI_Grok_Assets.zip` 的成员 `spacexai - symbol - black - squared.png`（1200×1200，2026-10-01 取得，HTTP 200）。
+   - **Repository asset**：`icons/SpaceXAI/SpaceXAI/SpaceXAI.png` 是**项目规范化派生**（derivative）：1200×1200 → 512×512 LANCZOS 缩放 + 本仓库统一 512×512 RGBA squircle 容器遮罩（r≈115、四角透明）。它**不是**官方原文件的逐字节落库。
+   - **Logo artwork**：品牌图形本体未重绘、未改色、未改变字形或比例（仅整体缩放 + 容器遮罩；像素级比对：RGB 与缩放后的官方素材完全一致，max diff = 0）。
+   - 官方素材的使用须遵循官方 Brand Guidelines 条款；本仓库只做容器规范化，不改变品牌本体设计。
+3. **Canonical Brand 唯一**：同一品牌只允许出现在一个分类，跨语义需求用 `brands.json` 的 tags/aliases 表达，**绝不复制 PNG**；
+4. **系统图标归 `System/`**：Direct / Reject / Proxy / SSID / Traffic 等无品牌策略图标不混入品牌分类；
+5. **ownership evidence ≠ Brand Graph**：`brands.json` 是 canonical Brand / Icon / Relationship SSOT；现实世界的 corporate ownership 证据、来源与研究判断只记录在 [`docs/references/brand-ownership-audit.md`](../docs/references/brand-ownership-audit.md)，不因「同属一家公司」自动新增 `parent_brand`；只有经 Brand / Product Hierarchy 语义确认的关系才进入关系图。
+6. **category ≠ parent_brand ≠ 生态根**：category 回答「图标归哪个一级目录」，parent_brand 回答「直接属于哪个品牌」（**直接父品牌 / immediate parent**，如 Instagram → Facebook、YouTubeMusic → YouTube、iCloudPrivateRelay → iCloud），生态根回答「最终属于哪个生态」——生态根**不单独存字段**，由 `entity_type: ecosystem` 标记 + 沿 parent 链向上动态派生（`brand_relationships.resolve_ecosystem_root`），消费方零成本获得。
+   **entity_type** 回答「实体本身是什么」：`ecosystem` 用于生态根品牌（拥有自身一级生态分类者，当前 17 个，随 brands.json 动态扩展），子品牌与中间层品牌一律 `product_brand`；**公司品牌但未构成独立生态者（如 SINA / Xiaomi / TVB）亦为 `product_brand`**，其子公司/产品经 `parent_brand` 关联，不建一级生态目录。
+   `SpaceXAI` 资产状态（generated）：`icon_status=official`；`icon_path=icons/SpaceXAI/SpaceXAI/SpaceXAI.png`。
+
+   **Historical / 历史说明（Evidence 实验已移除，非当前架构）**：仓库曾尝试一层 `parent-edge-evidence` 辅助审计清单
+   （`relation_type` / `parent_brand_validity` 分级）。2026-10-01 评估后**从 active 架构中移除**：
+   它没有真实消费者（不被 CI、生成器、resolver 或下游依赖），不是 SSOT，且其分级是对人工审计文字的
+   关键词 triage，117 条记录中 0 条带 `source.url`，无法独立取证——保留只会制造第二套关系叙事的错觉。
+   现实世界歧义由 `config/brand-review-queue.json`（人工裁决）+ [`docs/references/brand-ownership-audit.md`](../docs/references/brand-ownership-audit.md)（研究层）承担。
+
+   **下游同步接口**：`config/brand-relationships.json` 是从上述 SSOT + 关系引擎派生的机器可读导出
+   （标 `generated: true` / `source: config/brands.json`，**不是第二个 SSOT**，CI 第 15 组逐项校验），
+   供 mihomo-rules 等下游读取 `parent` / `ancestor_chain` / `graph_root` / `ecosystem_root`。
+
+**归属审计（研究层）**：[`docs/references/brand-ownership-audit.md`](../docs/references/brand-ownership-audit.md) 记录全库每个 Canonical Brand 的**当前现实世界母公司**判断、证据来源、状态（CONFIRMED_PARENT / NO_PARENT / AMBIGUOUS_JV / RETIRED / SPECIAL_ENTITY）与采取的动作。CI 只能验证结构一致性，**无法证明现实归属完整性**——该职责由该审计文档承担。
+
+**未来判例**：
+
+- 新增 Spotify → `Music/Spotify/`
+- 新增 Amazon 服务（如 Amazon Gaming）→ `Amazon/<Brand>/`
+- 某生态根新增第二个 descendant（直系或孙代均可）→ 生态根 descendants 达到 2，**立即建立** `icons/<Root>/` 一级生态分类并迁入（CI 动态校验）
+- 新增中间层产品（如 YouTube 下新增 YouTube Shorts 类服务）→ 写直接父品牌（`parent_brand = YouTube`），物理路径随之嵌套到 `icons/Google/YouTube/<新品牌>/`；**不**为中间层另建一级分类（阈值看生态根 descendants，防止分类爆炸）
+- 新增 Alibaba AI 产品 → `Alibaba/<Brand>/`（AI 属性写 tags）
+- 品牌被收购 → 先查**当前**官方状态，再决定生态归属；历史收购关系不等于当前归属
+- 品牌脱离母公司 → 按当前独立状态归回功能分类
+
+---
+
+## 📦 发布与使用 / Usage & Distribution
+
+本项目图标已发布为独立仓库，**不依赖任何外部上游同步**。图标格式统一为：
+
+- **512×512 PNG，RGBA 模式**
+- **Apple 风格 squircle 圆角（r=115px / 22.4%）**
+- **四角透明**，可直接用于 Surge / Loon / Mihomo / Egern 等客户端
+
+**订阅地址（建议用 `raw.githubusercontent.com`，不要用 jsDelivr）：**
+
+```
+https://raw.githubusercontent.com/Hawaiine/Oasisic-Icons/main/config/surge-icon.json
+```
+
+本地也可直接使用 `icons/` 目录下的 PNG。
+
+**规范化工具：**
+
+```bash
+python3 scripts/normalize-icons.py --apply   # 512×512 / RGBA / r=115 圆角
+python3 scripts/optimize-icons.py            # 无损重压缩（不降色型）
+python3 scripts/ci-validate-icons.py         # 校验 PNG / 目录 / JSON 一致性
+```
+
+---
+
+## 🤝 贡献指南 / Contributing
+
+### 图标质量要求
+
+**贡献与替换图标统一遵守画质规范**：512×512 方形 PNG（RGBA）、Apple 风格 squircle 圆角 r=115（约 22.4%）、保留原始底色（不抠图）、圆角遮罩外完全透明、无损重压缩不做有损量化。像素保真红线（禁抠图 / 禁改色 / 禁二次圆角 / 禁填镂空）、细线低对比（Docker 类）与透明镂空（AliCloud 类）的处理细则、窄条字标策略与圆角遮罩边界判据，全部见 [`docs/references/icon-quality-notes.md`](../docs/references/icon-quality-notes.md)（§1 强制输出规范 · §2 像素保真 · §3 标准处理流程 · §4 内容布局 · §5 项目标准）。
+
+### 命名规范
+
+命名与目录规则以本文「目录与命名规范」小节为准：每品牌独立目录、默认图标 `<品牌名>.png`（canonical-only，当前不支持变体）、品牌名 PascalCase（官方大小写优先，如 `iQIYI`）、特殊字符 `+` → `Plus`；深层子品牌路径以 `scripts/validate-brand.py` 的推导结果为准。
+
+### 提交流程
+
+1. Fork 本仓库
+2. 按规范把图标放入 `icons/<分类>/<品牌名>/`（深层子品牌放入父品牌目录，路径以 `scripts/validate-brand.py` 的推导结果为准）
+3. 本地运行 `python3 scripts/ci-validate-icons.py` 确保通过
+4. 提交 Pull Request
+
+---
+
+## 📚 参考文档 / References
+
+- [docs/references/icon-quality-notes.md](../docs/references/icon-quality-notes.md) — 画质规范、规范化结果、遗留项说明
+- [docs/references/icon-research.md](../docs/references/icon-research.md) — 品牌分类体系、策略组命名、常见图标来源（中英对照）
+- [docs/references/upstream-history.md](../docs/references/upstream-history.md) — 上游来源历史参考
+- [docs/references/brand-glossary.md](../docs/references/brand-glossary.md) — 品牌中英对照表（文件夹名 ↔ 中文显示名）
+- [docs/references/brand-ownership-audit.md](../docs/references/brand-ownership-audit.md) — 全库品牌现实世界归属审计（证据层）、关系模型、mihomo-rules 对照
+- [docs/references/brand-naming-contract.md](../docs/references/brand-naming-contract.md) — 品牌命名与同步契约（ID / display_name / directory / filename / 特殊字符映射 / 父品牌 README 规则）
+
+## 📄 License
+
+MIT License © 2026 [Hawaiine](https://github.com/Hawaiine)
+
+---
+
+## 🔗 相关项目 / Related
+
+- [mihomo-rules](https://github.com/Hawaiine/mihomo-rules) — 代理规则集（本仓库图标的主要消费方）
